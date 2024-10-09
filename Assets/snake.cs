@@ -66,8 +66,16 @@ public class snake : MonoBehaviour
 
         }
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        gameOver= true;
+        Debug.Log("wa");
+        gameOver = true;
+
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        Debug.Log("wa");
+        gameOver = true;
+
     }
 }
