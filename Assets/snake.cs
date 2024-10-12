@@ -5,7 +5,7 @@ using UnityEngine;
 public class snake : MonoBehaviour
 {
     string direc = "left";
-    double timer;
+    float timer;
     public float length;
     bool gameOver;
 
@@ -21,13 +21,10 @@ public class snake : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("space"))
-        {
-            Summoning();
-        }
         if (Input.GetKeyDown("right"))
         {
             direc = "right";
+            transform.sca
         }
         if (Input.GetKeyDown("left"))
         {
@@ -43,9 +40,10 @@ public class snake : MonoBehaviour
         }
         if (!gameOver)
         {
-            timer += Time.deltaTime * ((snaaake.Count / 10) + 1);
+            timer += Time.deltaTime * ((snaaake.Count / 10f) + 1f);
             if (timer >= 1)
             {
+                Debug.Log((snaaake.Count / 10f) + 1f);
                 GoGoGo();
                 timer = 0;
             }
