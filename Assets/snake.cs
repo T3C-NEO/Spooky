@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class snake : MonoBehaviour
 {
-    string direc = "right";
+    string direc = "left";
     double timer;
     public float length;
     bool gameOver;
-    // Start is called before the first frame update
+
+    public List<GameObject> snaaake = new List<GameObject>();
+    public GameObject square;
+    public GameObject[] foods;
+
     void Start()
     {
         
@@ -17,6 +21,10 @@ public class snake : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown("space"))
+        {
+            Summoning();
+        }
         if (Input.GetKeyDown("right"))
         {
             direc = "right";
@@ -35,7 +43,7 @@ public class snake : MonoBehaviour
         }
         if (!gameOver)
         {
-            timer += Time.deltaTime * ((length / 10) + 1);
+            timer += Time.deltaTime * ((snaaake.Count / 10) + 1);
             if (timer >= 1)
             {
                 GoGoGo();
@@ -46,6 +54,10 @@ public class snake : MonoBehaviour
 
     void GoGoGo()
     {
+        for (int i = snaaake.Count-1; i > 0; i--)
+        {
+            snaaake[i].transform.position = snaaake[i - 1].transform.position;
+        }
         if (direc == "right")
         {
             transform.position += new Vector3(1, 0, 0);
@@ -68,14 +80,20 @@ public class snake : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("wa");
-        gameOver = true;
+        if (collision.tag == "food")
+        {
+            Summoning();
+            Destroy(collision.gameObject);
+        }
+        else
+        {
+            gameOver = true;
+        }
 
     }
-    private void OnTriggerStay2D(Collider2D collision)
+    void Summoning()
     {
-        Debug.Log("wa");
-        gameOver = true;
-
+        snaaake.Add(Instantiate(square, snaaake[snaaake.Count-1].transform.position, Quaternion.identity));
+        Instantiate(foods[Random.Range(0, foods.Length)], new Vector2(Random.Range(-8, 9), Random.Range(-4, 5)), Quaternion.identity);
     }
 }
