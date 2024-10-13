@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class snake : MonoBehaviour
 {
@@ -13,37 +14,64 @@ public class snake : MonoBehaviour
     public GameObject square;
     public GameObject[] foods;
 
+    public GameObject end;
+
+    public Sprite pumpkin1;
+    public Sprite pumpkin2;
+    public SpriteRenderer me;
+
+    public AudioSource nom;
+
     void Start()
     {
-        
+        Instantiate(foods[Random.Range(0, foods.Length)], new Vector2(Random.Range(-8, 9), Random.Range(-4, 5)), Quaternion.identity);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("right"))
+        if (Input.GetKeyDown("space") && gameOver)
+        {
+            Restar();
+        }
+        if (Input.GetKeyDown("right") || Input.GetKeyDown("d"))
         {
             direc = "right";
-            transform.sca
+            transform.localScale = new Vector3(1, 1, 1);
+            transform.eulerAngles = new Vector3(0, 0, 0);
         }
-        if (Input.GetKeyDown("left"))
+        if (Input.GetKeyDown("left") || Input.GetKeyDown("a"))
         {
             direc = "left";
+            transform.localScale = new Vector3(-1, 1, 1);
+            transform.eulerAngles = new Vector3(0, 0, 0);
         }
-        if (Input.GetKeyDown("up"))
+        if (Input.GetKeyDown("up") || Input.GetKeyDown("w"))
         {
             direc = "up";
+            if (transform.localScale.x == 1)
+                transform.eulerAngles = new Vector3(0, 0, 90);
+            else
+                transform.eulerAngles = new Vector3(0, 0, -90);
         }
-        if (Input.GetKeyDown("down"))
+        if (Input.GetKeyDown("down") || Input.GetKeyDown("s"))
         {
             direc = "down";
+            if (transform.localScale.x == -1)
+                transform.eulerAngles = new Vector3(0, 0, 90);
+            else
+                transform.eulerAngles = new Vector3(0, 0, -90);
         }
         if (!gameOver)
         {
             timer += Time.deltaTime * ((snaaake.Count / 10f) + 1f);
+            if (timer >= 0.5f && me.sprite == pumpkin1)
+            {
+                me.sprite = pumpkin2;
+            }
             if (timer >= 1)
             {
-                Debug.Log((snaaake.Count / 10f) + 1f);
+                me.sprite = pumpkin1;
                 GoGoGo();
                 timer = 0;
             }
@@ -86,12 +114,19 @@ public class snake : MonoBehaviour
         else
         {
             gameOver = true;
+            end.SetActive(true);
         }
 
+    }
+    public void Restar()
+    {
+        SceneManager.LoadScene(0);
     }
     void Summoning()
     {
         snaaake.Add(Instantiate(square, snaaake[snaaake.Count-1].transform.position, Quaternion.identity));
         Instantiate(foods[Random.Range(0, foods.Length)], new Vector2(Random.Range(-8, 9), Random.Range(-4, 5)), Quaternion.identity);
+        nom.pitch = Random.Range(0.8f, 1.1f);
+        nom.Play();
     }
 }
