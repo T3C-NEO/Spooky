@@ -62,14 +62,18 @@ public class snake : MonoBehaviour
             else
                 transform.eulerAngles = new Vector3(0, 0, -90);
         }
+    }
+    private void FixedUpdate()
+    {
         if (!gameOver)
         {
-            timer += Time.deltaTime * ((snaaake.Count / 10f) + 1f);
-            if (timer >= 0.5f && me.sprite == pumpkin1)
+            timer += ((snaaake.Count / 10f) + 1f);
+            Debug.Log(timer);
+            if (timer >= 25 && me.sprite == pumpkin1)
             {
                 me.sprite = pumpkin2;
             }
-            if (timer >= 1)
+            if (timer >= 50)
             {
                 me.sprite = pumpkin1;
                 GoGoGo();
