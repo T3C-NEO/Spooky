@@ -68,7 +68,6 @@ public class snake : MonoBehaviour
         if (!gameOver)
         {
             timer += ((snaaake.Count / 10f) + 1f);
-            Debug.Log(timer);
             if (timer >= 25 && me.sprite == pumpkin1)
             {
                 me.sprite = pumpkin2;
