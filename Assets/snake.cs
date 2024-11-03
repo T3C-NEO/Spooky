@@ -25,6 +25,7 @@ public class snake : MonoBehaviour
     void Start()
     {
         Instantiate(foods[Random.Range(0, foods.Length)], new Vector2(Random.Range(-8, 9), Random.Range(-4, 5)), Quaternion.identity);
+        Instantiate(foods[Random.Range(0, foods.Length)], new Vector2(Random.Range(-8, 9), Random.Range(-4, 5)), Quaternion.identity);
     }
 
     // Update is called once per frame
