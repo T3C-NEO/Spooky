@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class snake : MonoBehaviour
@@ -21,6 +22,11 @@ public class snake : MonoBehaviour
     public SpriteRenderer me;
 
     public AudioSource nom;
+
+    int health = 2;
+    public Image[] hearts;
+
+    public Sprite grayHeart;
 
     void Start()
     {
@@ -115,10 +121,21 @@ public class snake : MonoBehaviour
             Summoning();
             Destroy(collision.gameObject);
         }
-        else
+        else if (collision.tag == "Finish")
         {
             gameOver = true;
             end.SetActive(true);
+        }
+        else
+        {
+            hearts[health].sprite = grayHeart;
+            health--;
+            if (health < 0)
+            {
+                gameOver = true;
+                end.SetActive(true);
+            }
+
         }
 
     }
