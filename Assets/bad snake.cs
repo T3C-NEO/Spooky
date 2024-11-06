@@ -86,7 +86,6 @@ public class badSnake : MonoBehaviour
             {
                 goTime = false;
             }
-            Debug.Log(direc);
 
         }
         goTime= false;

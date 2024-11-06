@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class snake : MonoBehaviour
 {
@@ -13,7 +14,8 @@ public class snake : MonoBehaviour
 
     public List<GameObject> snaaake = new List<GameObject>();
     public GameObject square;
-    public GameObject[] foods;
+    public List<GameObject> foods = new List<GameObject> ();
+    public GameObject[] allFoods;
 
     public GameObject end;
 
@@ -23,15 +25,20 @@ public class snake : MonoBehaviour
 
     public AudioSource nom;
 
+    public heads soNo;
+
+    //menu shit
     int health = 2;
     public Image[] hearts;
 
     public Sprite grayHeart;
 
+    public Button[] headClicks;
+
     void Start()
     {
-        Instantiate(foods[Random.Range(0, foods.Length)], new Vector2(Random.Range(-8, 9), Random.Range(-4, 5)), Quaternion.identity);
-        Instantiate(foods[Random.Range(0, foods.Length)], new Vector2(Random.Range(-8, 9), Random.Range(-4, 5)), Quaternion.identity);
+        Instantiate(foods[Random.Range(0, foods.Count)], new Vector2(Random.Range(-8, 9), Random.Range(-4, 5)), Quaternion.identity);
+        Instantiate(foods[Random.Range(0, foods.Count)], new Vector2(Random.Range(-8, 9), Random.Range(-4, 5)), Quaternion.identity);
     }
 
     // Update is called once per frame
@@ -119,6 +126,7 @@ public class snake : MonoBehaviour
         if (collision.tag == "food")
         {
             Summoning();
+            soNo.head += int.Parse(collision.name.Substring(0, 1));
             Destroy(collision.gameObject);
         }
         else if (collision.tag == "Finish")
@@ -146,8 +154,20 @@ public class snake : MonoBehaviour
     void Summoning()
     {
         snaaake.Add(Instantiate(square, snaaake[snaaake.Count-1].transform.position, Quaternion.identity));
-        Instantiate(foods[Random.Range(0, foods.Length)], new Vector2(Random.Range(-8, 9), Random.Range(-4, 5)), Quaternion.identity);
+        Instantiate(foods[Random.Range(0, foods.Count)], new Vector2(Random.Range(-8, 9), Random.Range(-4, 5)), Quaternion.identity);
         nom.pitch = Random.Range(0.8f, 1.1f);
         nom.Play();
+    }
+    public void UpgradeHeads()
+    {
+        for (int i = 0; i < headClicks.Length; i++)
+        {
+            headClicks[i].interactable = true;
+        }
+    }
+    public void UpgradeHeadsPart2()
+    {
+        Debug.Log(int.Parse(EventSystem.current.currentSelectedGameObject.tag));
+        foods.Add(allFoods[int.Parse(EventSystem.current.currentSelectedGameObject.tag)]);
     }
 }
