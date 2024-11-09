@@ -28,12 +28,14 @@ public class snake : MonoBehaviour
     public heads soNo;
 
     //menu shit
-    int health = 2;
+    public int health = 2;
     public Image[] hearts;
 
     public Sprite grayHeart;
 
     public Button[] headClicks;
+
+    public GameObject upgrade;
 
     void Start()
     {
@@ -44,6 +46,10 @@ public class snake : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown("escape") && !gameOver)
+        {
+            upgrade.SetActive(!upgrade.active);
+        }
         if (Input.GetKeyDown("space") && gameOver)
         {
             Restar();
@@ -79,7 +85,7 @@ public class snake : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (!gameOver)
+        if (!gameOver && !upgrade.active)
         {
             timer += ((snaaake.Count / 10f) + 1f);
             if (timer >= 25 && me.sprite == pumpkin1)
@@ -154,7 +160,7 @@ public class snake : MonoBehaviour
     void Summoning()
     {
         snaaake.Add(Instantiate(square, snaaake[snaaake.Count-1].transform.position, Quaternion.identity));
-        Instantiate(foods[Random.Range(0, foods.Count)], new Vector2(Random.Range(-8, 9), Random.Range(-4, 5)), Quaternion.identity);
+        Instantiate(foods[Random.Range(0, foods.Count)], new Vector2(Random.Range(-8, 8), Random.Range(-4, 5)), Quaternion.identity);
         nom.pitch = Random.Range(0.8f, 1.1f);
         nom.Play();
     }
@@ -169,5 +175,11 @@ public class snake : MonoBehaviour
     {
         Debug.Log(int.Parse(EventSystem.current.currentSelectedGameObject.tag));
         foods.Add(allFoods[int.Parse(EventSystem.current.currentSelectedGameObject.tag)]);
+
+        for (int i = 0; i < headClicks.Length; i++)
+        {
+            headClicks[i].interactable = false;
+        }
     }
+
 }

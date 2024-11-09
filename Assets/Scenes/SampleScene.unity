@@ -1676,7 +1676,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1230, y: 649}
+  m_SizeDelta: {x: 1230, y: 655}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &206509516
 MonoBehaviour:
@@ -8366,6 +8366,7 @@ MonoBehaviour:
   me: {fileID: 1056035611}
   nom: {fileID: 1056035615}
   soNo: {fileID: 1806257620}
+  health: 2
   hearts:
   - {fileID: 1612442609}
   - {fileID: 727264387}
@@ -8381,6 +8382,7 @@ MonoBehaviour:
   - {fileID: 833979154}
   - {fileID: 126249904}
   - {fileID: 590152034}
+  upgrade: {fileID: 1843309517}
 --- !u!212 &1056035611
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13719,8 +13721,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04fd12ded68f083479766581fffc72e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  snak: {fileID: 1056035610}
   head: 0
+  swapCost: 0
+  autoCost: 0
+  upgradeCost: 0
+  lowerCost: 0
+  healCost: 2
+  swapCostText: {fileID: 937625991}
+  autoCostText: {fileID: 1940881432}
+  upgradeCostText: {fileID: 523567621}
+  lowerCostText: {fileID: 2098211849}
+  healCostText: {fileID: 1341731782}
   display: {fileID: 1806257618}
+  redHeart: {fileID: 21300000, guid: a17985656dab5c9428cf1d42384d16d4, type: 3}
 --- !u!1 &1843309517
 GameObject:
   m_ObjectHideFlags: 0
@@ -15787,7 +15801,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2110332566}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1806257620}
+        m_TargetAssemblyTypeName: heads, Assembly-CSharp
+        m_MethodName: Heals
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2110332566
 MonoBehaviour:
   m_ObjectHideFlags: 0
