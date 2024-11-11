@@ -11,7 +11,6 @@ public class heads : MonoBehaviour
 
     public int swapCost;
     public int autoCost;
-    public int upgradeCost;
     public int lowerCost;
     public int healCost;
 
@@ -75,5 +74,16 @@ public class heads : MonoBehaviour
         chanceDan.text = Mathf.Round(((snak.chanceDan / snak.foods.Count) * 100f)).ToString()+"%";
         chanceAud.text = Mathf.Round(((snak.chanceAud / snak.foods.Count) * 100f)).ToString()+"%";
         chanceSkr.text = Mathf.Round(((snak.chanceSkr / snak.foods.Count) * 100f)).ToString()+"%";
+    }
+
+    public void UpgradeSpeed()
+    {
+        if (head >= lowerCost)
+        {
+            head -= lowerCost;
+            snak.speed += 10;
+            lowerCost *= 2;
+            lowerCostText.text = lowerCost +" heads";
+        }
     }
 }

@@ -47,6 +47,8 @@ public class snake : MonoBehaviour
     public float chanceAud;
     public float chanceSkr;
 
+    public float speed;
+
     void Start()
     {
         Instantiate(foods[Random.Range(0, foods.Count)], new Vector2(Random.Range(-8, 9), Random.Range(-4, 5)), Quaternion.identity);
@@ -99,7 +101,7 @@ public class snake : MonoBehaviour
     {
         if (!gameOver && !upgrade.active)
         {
-            timer += ((snaaake.Count / 10f) + 1f);
+            timer += ((snaaake.Count / speed) + 1f);
             if (timer >= 25 && me.sprite == pumpkin1)
             {
                 me.sprite = pumpkin2;

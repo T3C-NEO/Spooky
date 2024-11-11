@@ -4471,7 +4471,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 503824602}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1806257620}
+        m_TargetAssemblyTypeName: heads, Assembly-CSharp
+        m_MethodName: UpgradeSpeed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &503824602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8401,6 +8413,7 @@ MonoBehaviour:
   chanceDan: 0
   chanceAud: 0
   chanceSkr: 0
+  speed: 5
 --- !u!212 &1056035611
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13740,11 +13753,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snak: {fileID: 1056035610}
-  head: 0
+  head: 2
   swapCost: 0
   autoCost: 0
-  upgradeCost: 0
-  lowerCost: 0
+  lowerCost: 25
   healCost: 2
   swapCostText: {fileID: 937625991}
   autoCostText: {fileID: 1940881432}
@@ -15670,7 +15682,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2 heads
+  m_text: 25 heads
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a77d4378ceed5d640bbdf480efa929cb, type: 2}
   m_sharedMaterial: {fileID: 6529369477957732601, guid: a77d4378ceed5d640bbdf480efa929cb, type: 2}
