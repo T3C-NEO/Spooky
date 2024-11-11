@@ -8350,6 +8350,15 @@ MonoBehaviour:
   square: {fileID: 3977368013687198249, guid: b087dcf53988d744fba84147d8fef8ba, type: 3}
   foods:
   - {fileID: 3089911444654601029, guid: a4bcbf68d5416fb4a8fd096e211ea3e6, type: 3}
+  - {fileID: 3089911444654601029, guid: a4bcbf68d5416fb4a8fd096e211ea3e6, type: 3}
+  - {fileID: 3089911444654601029, guid: a4bcbf68d5416fb4a8fd096e211ea3e6, type: 3}
+  - {fileID: 3089911444654601029, guid: a4bcbf68d5416fb4a8fd096e211ea3e6, type: 3}
+  - {fileID: 3089911444654601029, guid: a4bcbf68d5416fb4a8fd096e211ea3e6, type: 3}
+  - {fileID: 3089911444654601029, guid: a4bcbf68d5416fb4a8fd096e211ea3e6, type: 3}
+  - {fileID: 3089911444654601029, guid: a4bcbf68d5416fb4a8fd096e211ea3e6, type: 3}
+  - {fileID: 3089911444654601029, guid: a4bcbf68d5416fb4a8fd096e211ea3e6, type: 3}
+  - {fileID: 3089911444654601029, guid: a4bcbf68d5416fb4a8fd096e211ea3e6, type: 3}
+  - {fileID: 3089911444654601029, guid: a4bcbf68d5416fb4a8fd096e211ea3e6, type: 3}
   allFoods:
   - {fileID: 3089911444654601029, guid: a4bcbf68d5416fb4a8fd096e211ea3e6, type: 3}
   - {fileID: 3089911444654601029, guid: 36387a6416866e84d8f0b6dc013df2b9, type: 3}
@@ -8383,6 +8392,15 @@ MonoBehaviour:
   - {fileID: 126249904}
   - {fileID: 590152034}
   upgrade: {fileID: 1843309517}
+  chanceSoph: 0
+  chanceDam: 0
+  chancePre: 0
+  chance240: 0
+  chanceKry: 0
+  chanceBli: 0
+  chanceDan: 0
+  chanceAud: 0
+  chanceSkr: 0
 --- !u!212 &1056035611
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13610,7 +13628,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 160.169, y: 278.215}
-  m_SizeDelta: {x: 1576.768, y: 100.427}
+  m_SizeDelta: {x: 1576, y: 100.427}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1806257618
 MonoBehaviour:
@@ -13735,6 +13753,15 @@ MonoBehaviour:
   healCostText: {fileID: 1341731782}
   display: {fileID: 1806257618}
   redHeart: {fileID: 21300000, guid: a17985656dab5c9428cf1d42384d16d4, type: 3}
+  chanceSoph: {fileID: 1379904860}
+  chanceDam: {fileID: 272848692}
+  chancePre: {fileID: 84699050}
+  chance240: {fileID: 733747891}
+  chanceKry: {fileID: 420177592}
+  chanceBli: {fileID: 1993106131}
+  chanceDan: {fileID: 1538176538}
+  chanceAud: {fileID: 249010782}
+  chanceSkr: {fileID: 230445710}
 --- !u!1 &1843309517
 GameObject:
   m_ObjectHideFlags: 0

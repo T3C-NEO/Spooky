@@ -37,10 +37,22 @@ public class snake : MonoBehaviour
 
     public GameObject upgrade;
 
+    public float chanceSoph;
+    public float chanceDam;
+    public float chancePre;
+    public float chance240;
+    public float chanceKry;
+    public float chanceBli;
+    public float chanceDan;
+    public float chanceAud;
+    public float chanceSkr;
+
     void Start()
     {
         Instantiate(foods[Random.Range(0, foods.Count)], new Vector2(Random.Range(-8, 9), Random.Range(-4, 5)), Quaternion.identity);
         Instantiate(foods[Random.Range(0, foods.Count)], new Vector2(Random.Range(-8, 9), Random.Range(-4, 5)), Quaternion.identity);
+        chanceSoph += 10;
+        soNo.UpdateChance();
     }
 
     // Update is called once per frame
@@ -176,10 +188,59 @@ public class snake : MonoBehaviour
         Debug.Log(int.Parse(EventSystem.current.currentSelectedGameObject.tag));
         foods.Add(allFoods[int.Parse(EventSystem.current.currentSelectedGameObject.tag)]);
 
+        if (int.Parse(EventSystem.current.currentSelectedGameObject.tag) == 0 && soNo.head >= 1)
+        {
+            soNo.head -= 1;
+            chanceSoph += 1;
+        }
+        else if (int.Parse(EventSystem.current.currentSelectedGameObject.tag) == 1 && soNo.head >= 2)
+        {
+            soNo.head -= 2;
+            chanceDam += 1;
+        }
+        else if (int.Parse(EventSystem.current.currentSelectedGameObject.tag) == 2 && soNo.head >= 5)
+        {
+            soNo.head -= 5;
+            chancePre += 1;
+        }
+        else if (int.Parse(EventSystem.current.currentSelectedGameObject.tag) == 3 && soNo.head >= 10)
+        {
+            soNo.head -= 10;
+            chance240 += 1;
+        }
+        else if (int.Parse(EventSystem.current.currentSelectedGameObject.tag) == 4 && soNo.head >= 25)
+        {
+            soNo.head -= 25;
+            chanceKry += 1;
+        }
+        else if (int.Parse(EventSystem.current.currentSelectedGameObject.tag) == 5 && soNo.head >= 50)
+        {
+            soNo.head -= 50;
+            chanceBli += 1;
+        }
+        else if (int.Parse(EventSystem.current.currentSelectedGameObject.tag) == 6 && soNo.head >= 100)
+        {
+            soNo.head -= 100;
+            chanceDan += 1;
+        }
+        else if (int.Parse(EventSystem.current.currentSelectedGameObject.tag) == 7 && soNo.head >= 500)
+        {
+            soNo.head -= 500;
+            chanceAud += 1;
+        }
+        else if (int.Parse(EventSystem.current.currentSelectedGameObject.tag) == 8 && soNo.head >= 1000)
+        {
+            soNo.head -= 1000;
+            chanceSkr += 1;
+        }
+
+
+
         for (int i = 0; i < headClicks.Length; i++)
         {
             headClicks[i].interactable = false;
         }
+        soNo.UpdateChance();
     }
 
 }
