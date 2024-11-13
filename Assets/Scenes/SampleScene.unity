@@ -8282,7 +8282,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1005893375}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1806257620}
+        m_TargetAssemblyTypeName: heads, Assembly-CSharp
+        m_MethodName: AutoCollect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1005893375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8361,11 +8373,6 @@ MonoBehaviour:
   - {fileID: 1404813678}
   square: {fileID: 3977368013687198249, guid: b087dcf53988d744fba84147d8fef8ba, type: 3}
   foods:
-  - {fileID: 3089911444654601029, guid: a4bcbf68d5416fb4a8fd096e211ea3e6, type: 3}
-  - {fileID: 3089911444654601029, guid: a4bcbf68d5416fb4a8fd096e211ea3e6, type: 3}
-  - {fileID: 3089911444654601029, guid: a4bcbf68d5416fb4a8fd096e211ea3e6, type: 3}
-  - {fileID: 3089911444654601029, guid: a4bcbf68d5416fb4a8fd096e211ea3e6, type: 3}
-  - {fileID: 3089911444654601029, guid: a4bcbf68d5416fb4a8fd096e211ea3e6, type: 3}
   - {fileID: 3089911444654601029, guid: a4bcbf68d5416fb4a8fd096e211ea3e6, type: 3}
   - {fileID: 3089911444654601029, guid: a4bcbf68d5416fb4a8fd096e211ea3e6, type: 3}
   - {fileID: 3089911444654601029, guid: a4bcbf68d5416fb4a8fd096e211ea3e6, type: 3}
@@ -13753,14 +13760,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snak: {fileID: 1056035610}
-  head: 2
-  swapCost: 0
-  autoCost: 0
-  lowerCost: 25
+  head: 0
+  swapCost: 2
+  autoCost: 1
+  lowerCost: 10
   healCost: 2
+  window: {fileID: 1843309517}
   swapCostText: {fileID: 937625991}
   autoCostText: {fileID: 1940881432}
-  upgradeCostText: {fileID: 523567621}
   lowerCostText: {fileID: 2098211849}
   healCostText: {fileID: 1341731782}
   display: {fileID: 1806257618}

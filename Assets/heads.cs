@@ -14,9 +14,12 @@ public class heads : MonoBehaviour
     public int lowerCost;
     public int healCost;
 
+    float collect = 80000000;
+
+    public GameObject window;
+
     public TextMeshProUGUI swapCostText;
     public TextMeshProUGUI autoCostText;
-    public TextMeshProUGUI upgradeCostText;
     public TextMeshProUGUI lowerCostText;
     public TextMeshProUGUI healCostText;
 
@@ -38,7 +41,11 @@ public class heads : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        swapCostText.text = swapCost + " heads";
+        autoCostText.text = autoCost + " heads";
+        lowerCostText.text = lowerCost + " heads";
+        healCostText.text = healCost + " heads";
+
     }
 
     // Update is called once per frame
@@ -83,7 +90,51 @@ public class heads : MonoBehaviour
             head -= lowerCost;
             snak.speed += 10;
             lowerCost *= 2;
-            lowerCostText.text = lowerCost +" heads";
+            lowerCostText.text = lowerCost + " heads";
+        }
+    }
+    public void AutoCollect()
+    {
+        if (head >= autoCost)
+        {
+            if (collect > 4)
+            {
+                collect = 8;
+                StartCoroutine(MySexyCoroutine());
+            }
+            head -= autoCost;
+            autoCost *= 10;
+            collect /= 2;
+            autoCostText.text = autoCost + " heads";
+        }
+    }
+    public IEnumerator MySexyCoroutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(collect);
+            if (!window.active)
+            {
+                if (snak.chanceSkr > 0)
+                    head += 1000;
+                else if (snak.chanceAud > 0)
+                    head += 500;
+                else if (snak.chanceDan > 0)
+                    head += 100;
+                else if (snak.chanceBli > 0)
+                    head += 50;
+                else if (snak.chanceKry > 0)
+                    head += 25;
+                else if (snak.chance240 > 0)
+                    head += 10;
+                else if (snak.chancePre > 0)
+                    head += 5;
+                else if (snak.chanceDam > 0)
+                    head += 2;
+                else
+                    head += 1;
+            }
+            yield return null; 
         }
     }
 }
