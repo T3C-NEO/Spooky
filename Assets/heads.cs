@@ -7,7 +7,7 @@ public class heads : MonoBehaviour
 {
     public snake snak;
 
-    public int head;
+    public float head;
 
     public int swapCost;
     public int autoCost;
@@ -27,6 +27,8 @@ public class heads : MonoBehaviour
 
     public Sprite redHeart;
 
+    int max;
+    int count;
 
     public TextMeshProUGUI chanceSoph;
     public TextMeshProUGUI chanceDam;
@@ -51,9 +53,13 @@ public class heads : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        display.text = " heads: "+ head;
+        display.text = " heads: "+ (int)head;
     }
-
+    void FixedUpdate()
+    {
+        if (!window.active && !snak.gameOver)
+            head += max / 600f;
+    }
     public void Heals()
     {
         if (snak.health < 2 && head >= healCost)
@@ -81,6 +87,27 @@ public class heads : MonoBehaviour
         chanceDan.text = Mathf.Round(((snak.chanceDan / snak.foods.Count) * 100f)).ToString()+"%";
         chanceAud.text = Mathf.Round(((snak.chanceAud / snak.foods.Count) * 100f)).ToString()+"%";
         chanceSkr.text = Mathf.Round(((snak.chanceSkr / snak.foods.Count) * 100f)).ToString()+"%";
+        if (collect < 10)
+        {
+            if (snak.chanceSkr > 0)
+                max = 1000;
+            else if (snak.chanceAud > 0)
+                max = 500;
+            else if (snak.chanceDan > 0)
+                max = 100;
+            else if (snak.chanceBli > 0)
+                max = 50;
+            else if (snak.chanceKry > 0)
+                max = 25;
+            else if (snak.chance240 > 0)
+                max = 10;
+            else if (snak.chancePre > 0)
+                max = 5;
+            else if (snak.chanceDam > 0)
+                max = 2;
+            else
+                max = 1;
+        }
     }
 
     public void UpgradeSpeed()
@@ -99,8 +126,9 @@ public class heads : MonoBehaviour
         {
             if (collect > 4)
             {
+                max = 1;
                 collect = 8;
-                StartCoroutine(MySexyCoroutine());
+                //StartCoroutine(MySexyCoroutine());
             }
             head -= autoCost;
             autoCost *= 10;
@@ -136,5 +164,10 @@ public class heads : MonoBehaviour
             }
             yield return null; 
         }
+    }
+
+    public void showUpgrade()
+    {
+        
     }
 }

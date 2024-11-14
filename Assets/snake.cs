@@ -10,7 +10,7 @@ public class snake : MonoBehaviour
     string direc = "left";
     float timer;
     public float length;
-    bool gameOver;
+    public bool gameOver;
 
     public List<GameObject> snaaake = new List<GameObject>();
     public GameObject square;
@@ -124,20 +124,28 @@ public class snake : MonoBehaviour
         if (direc == "right")
         {
             transform.position += new Vector3(1, 0, 0);
+            if (transform.position.x == 10)
+                transform.position += new Vector3(-19, 0, 0);
         }
         else if (direc == "left")
         {
             transform.position += new Vector3(-1, 0, 0);
+            if (transform.position.x == -10)
+                transform.position += new Vector3(19, 0, 0);
 
         }
         else if (direc == "up")
         {
             transform.position += new Vector3(0, 1, 0);
+            if (transform.position.y == 6)
+                transform.position += new Vector3(0, -11, 0);
 
         }
         else if (direc == "down")
         {
             transform.position += new Vector3(0, -1, 0);
+            if (transform.position.y == -6)
+                transform.position += new Vector3(0, 11, 0);
 
         }
     }

@@ -7,17 +7,14 @@ public class badSnake : MonoBehaviour
 {
     int direc = 0;
     float timer;
-    public float length;
-    bool gameOver;
+    public GameObject gameOver;
 
-    public List<GameObject> snaaake = new List<GameObject>();
-    public GameObject square;
-    public GameObject[] foods;
 
 
     public Sprite pumpkin1;
     public Sprite pumpkin2;
     public SpriteRenderer me;
+
 
     public AudioSource nom;
 
@@ -25,9 +22,9 @@ public class badSnake : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!gameOver)
+        if (!gameOver.active)
         {
-            timer += ((snaaake.Count / 10f) + 1f);
+            timer += 1;
             if (timer >= 25 && me.sprite == pumpkin1)
             {
                 me.sprite = pumpkin2;
@@ -43,10 +40,6 @@ public class badSnake : MonoBehaviour
 
     void GoGoGo()
     {
-        for (int i = snaaake.Count-1; i > 0; i--)
-        {
-            snaaake[i].transform.position = snaaake[i - 1].transform.position;
-        }
         if (direc == 2 || direc == 6)
         {
             transform.position += new Vector3(1, 0, 0);
