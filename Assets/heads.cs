@@ -170,4 +170,15 @@ public class heads : MonoBehaviour
     {
         
     }
+
+    public void changeSkin()
+    {
+        if (head >= swapCost)
+        {
+            head -= swapCost;
+            snak.UpdateSkin();
+            swapCostText.text = swapCost + " heads";
+            swapCost += 1;
+        }
+    }
 }

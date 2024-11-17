@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 
 public class snake : MonoBehaviour
 {
+    int skin;
     string direc = "left";
     float timer;
     public float length;
@@ -19,8 +20,20 @@ public class snake : MonoBehaviour
 
     public GameObject end;
 
-    public Sprite pumpkin1;
-    public Sprite pumpkin2;
+    Sprite pumpkin1;
+    Sprite pumpkin2;
+    Sprite pumpkin3;
+
+    public Sprite pumpO1;
+    public Sprite pumpO2;
+    public Sprite pumpO3;
+    public Sprite pumpB1;
+    public Sprite pumpB2;
+    public Sprite pumpB3;
+    public Sprite pumpP1;
+    public Sprite pumpP2;
+    public Sprite pumpP3;
+
     public SpriteRenderer me;
 
     public AudioSource nom;
@@ -49,18 +62,23 @@ public class snake : MonoBehaviour
 
     public float speed;
 
+    bool started;
+
     void Start()
     {
         Instantiate(foods[Random.Range(0, foods.Count)], new Vector2(Random.Range(-8, 9), Random.Range(-4, 5)), Quaternion.identity);
         Instantiate(foods[Random.Range(0, foods.Count)], new Vector2(Random.Range(-8, 9), Random.Range(-4, 5)), Quaternion.identity);
         chanceSoph += 5;
         soNo.UpdateChance();
+        pumpkin2 = pumpO1;
+        pumpkin1 = pumpO2;
+        pumpkin3 = pumpO3;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("escape") && !gameOver)
+        if (Input.GetKeyDown("escape") && !gameOver && started == true)
         {
             upgrade.SetActive(!upgrade.active);
         }
@@ -101,6 +119,7 @@ public class snake : MonoBehaviour
     {
         if (!gameOver && !upgrade.active)
         {
+            started = true;
             timer += ((snaaake.Count / speed) + 1f);
             if (timer >= 25 && me.sprite == pumpkin1)
             {
@@ -182,6 +201,7 @@ public class snake : MonoBehaviour
     void Summoning()
     {
         snaaake.Add(Instantiate(square, snaaake[snaaake.Count-1].transform.position, Quaternion.identity));
+        snaaake[snaaake.Count-1].GetComponent<SpriteRenderer>().sprite = pumpkin3;
         Instantiate(foods[Random.Range(0, foods.Count)], new Vector2(Random.Range(-8, 8), Random.Range(-4, 5)), Quaternion.identity);
         nom.pitch = Random.Range(0.8f, 1.1f);
         nom.Play();
@@ -260,5 +280,35 @@ public class snake : MonoBehaviour
         }
         soNo.UpdateChance();
     }
+    public void UpdateSkin()
+    {
+        int i = skin;
+        while (i == skin)
+        {
+            i = Random.Range(0, 3);
+        }
+        skin = i;
+        if (skin == 0)
+        {
+            pumpkin2 = pumpO1;
+            pumpkin1 = pumpO2;
+            pumpkin3 = pumpO3;
+        }
+        else if (skin == 1)
+        {
+            pumpkin2 = pumpB1;
+            pumpkin1 = pumpB2;
+            pumpkin3 = pumpB3;
+        }
+        else if (skin == 2)
+        {
+            pumpkin2 = pumpP1;
+            pumpkin1 = pumpP2;
+            pumpkin3 = pumpP3;
+        }
+        for (i = 1; i < snaaake.Count; i++)
+            snaaake[i].GetComponent<SpriteRenderer>().sprite = pumpkin3;
 
+        me.sprite = pumpkin2;
+    }
 }
