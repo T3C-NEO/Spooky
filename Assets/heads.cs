@@ -58,7 +58,7 @@ public class heads : MonoBehaviour
     void FixedUpdate()
     {
         if (!window.active && !snak.gameOver)
-            head += max / 600f;
+            head += (max+(max*collect)) / 600f;
     }
     public void Heals()
     {
@@ -115,7 +115,7 @@ public class heads : MonoBehaviour
         if (head >= lowerCost)
         {
             head -= lowerCost;
-            snak.speed += 10;
+            snak.speed += 5;
             lowerCost *= 2;
             lowerCostText.text = lowerCost + " heads";
         }
@@ -127,12 +127,12 @@ public class heads : MonoBehaviour
             if (collect > 4)
             {
                 max = 1;
-                collect = 8;
+                collect = -0.5f;
                 //StartCoroutine(MySexyCoroutine());
             }
             head -= autoCost;
             autoCost *= 10;
-            collect /= 2;
+            collect += 0.5f;
             autoCostText.text = autoCost + " heads";
         }
     }

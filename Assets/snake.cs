@@ -68,7 +68,7 @@ public class snake : MonoBehaviour
     {
         Instantiate(foods[Random.Range(0, foods.Count)], new Vector2(Random.Range(-8, 9), Random.Range(-4, 5)), Quaternion.identity);
         Instantiate(foods[Random.Range(0, foods.Count)], new Vector2(Random.Range(-8, 9), Random.Range(-4, 5)), Quaternion.identity);
-        chanceSoph += 5;
+        chanceSoph += 3;
         soNo.UpdateChance();
         pumpkin2 = pumpO1;
         pumpkin1 = pumpO2;
