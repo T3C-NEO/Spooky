@@ -75,7 +75,10 @@ public class heads : MonoBehaviour
             Debug.Log("nah, not gonna do that");
         }
     }
-
+    public void ShopButton()
+    {
+        window.SetActive(!window.active);
+    }
     public void UpdateChance()
     {
         chanceSoph.text = Mathf.Round(((snak.chanceSoph / snak.foods.Count) * 100f)).ToString()+"%";

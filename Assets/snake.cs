@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class snake : MonoBehaviour
 {
@@ -43,6 +44,10 @@ public class snake : MonoBehaviour
     //menu shit
     public int health = 2;
     public Image[] hearts;
+
+    public Image upgreadHeads;
+    public Sprite[] headOptions;
+    public TextMeshProUGUI upgradeCost;
 
     public Sprite grayHeart;
 
@@ -173,7 +178,7 @@ public class snake : MonoBehaviour
         if (collision.tag == "food")
         {
             Summoning();
-            soNo.head += int.Parse(collision.name.Substring(0, 1));
+            soNo.head += int.Parse(collision.name.Substring(0, 4));
             Destroy(collision.gameObject);
         }
         else if (collision.tag == "Finish")
@@ -208,77 +213,147 @@ public class snake : MonoBehaviour
     }
     public void UpgradeHeads()
     {
-        for (int i = 0; i < headClicks.Length; i++)
+        if (upgreadHeads.sprite == headOptions[0] && soNo.head >= 1)
         {
-            headClicks[i].interactable = true;
-        }
-    }
-    public void UpgradeHeadsPart2()
-    {
-        Debug.Log(int.Parse(EventSystem.current.currentSelectedGameObject.tag));
-
-        if (int.Parse(EventSystem.current.currentSelectedGameObject.tag) == 0 && soNo.head >= 1)
-        {
-            foods.Add(allFoods[int.Parse(EventSystem.current.currentSelectedGameObject.tag)]);
+            foods.Add(allFoods[0]);
             soNo.head -= 1;
             chanceSoph += 1;
         }
-        else if (int.Parse(EventSystem.current.currentSelectedGameObject.tag) == 1 && soNo.head >= 2)
+        else if(upgreadHeads.sprite == headOptions[1] && soNo.head >= 2)
         {
-            foods.Add(allFoods[int.Parse(EventSystem.current.currentSelectedGameObject.tag)]);
+            foods.Add(allFoods[1]);
             soNo.head -= 2;
             chanceDam += 1;
         }
-        else if (int.Parse(EventSystem.current.currentSelectedGameObject.tag) == 2 && soNo.head >= 5)
+        else if(upgreadHeads.sprite == headOptions[2] && soNo.head >= 5)
         {
-            foods.Add(allFoods[int.Parse(EventSystem.current.currentSelectedGameObject.tag)]);
+            foods.Add(allFoods[2]);
             soNo.head -= 5;
             chancePre += 1;
         }
-        else if (int.Parse(EventSystem.current.currentSelectedGameObject.tag) == 3 && soNo.head >= 10)
+        else if(upgreadHeads.sprite == headOptions[3] && soNo.head >= 10)
         {
-            foods.Add(allFoods[int.Parse(EventSystem.current.currentSelectedGameObject.tag)]);
+            foods.Add(allFoods[3]);
             soNo.head -= 10;
             chance240 += 1;
         }
-        else if (int.Parse(EventSystem.current.currentSelectedGameObject.tag) == 4 && soNo.head >= 25)
+        else if(upgreadHeads.sprite == headOptions[4] && soNo.head >= 25)
         {
-            foods.Add(allFoods[int.Parse(EventSystem.current.currentSelectedGameObject.tag)]);
+            foods.Add(allFoods[4]);
             soNo.head -= 25;
             chanceKry += 1;
         }
-        else if (int.Parse(EventSystem.current.currentSelectedGameObject.tag) == 5 && soNo.head >= 50)
+        else if(upgreadHeads.sprite == headOptions[5] && soNo.head >= 50)
         {
-            foods.Add(allFoods[int.Parse(EventSystem.current.currentSelectedGameObject.tag)]);
+            foods.Add(allFoods[5]);
             soNo.head -= 50;
             chanceBli += 1;
         }
-        else if (int.Parse(EventSystem.current.currentSelectedGameObject.tag) == 6 && soNo.head >= 100)
+        else if(upgreadHeads.sprite == headOptions[6] && soNo.head >= 100)
         {
-            foods.Add(allFoods[int.Parse(EventSystem.current.currentSelectedGameObject.tag)]);
+            foods.Add(allFoods[6]);
             soNo.head -= 100;
             chanceDan += 1;
         }
-        else if (int.Parse(EventSystem.current.currentSelectedGameObject.tag) == 7 && soNo.head >= 500)
+        else if(upgreadHeads.sprite == headOptions[7] && soNo.head >= 500)
         {
-            foods.Add(allFoods[int.Parse(EventSystem.current.currentSelectedGameObject.tag)]);
+            foods.Add(allFoods[7]);
             soNo.head -= 500;
             chanceAud += 1;
         }
-        else if (int.Parse(EventSystem.current.currentSelectedGameObject.tag) == 8 && soNo.head >= 1000)
+        else if(upgreadHeads.sprite == headOptions[8] && soNo.head >= 1000)
         {
-            foods.Add(allFoods[int.Parse(EventSystem.current.currentSelectedGameObject.tag)]);
+            foods.Add(allFoods[8]);
             soNo.head -= 1000;
             chanceSkr += 1;
         }
-
-
-
-        for (int i = 0; i < headClicks.Length; i++)
-        {
-            headClicks[i].interactable = false;
-        }
+        upgreadHeads.sprite = null;
+        upgradeCost.text = "Click Below!";
         soNo.UpdateChance();
+    }
+    public void UpgradeHeadsPart2()
+    {
+        upgreadHeads.sprite = headOptions[int.Parse(EventSystem.current.currentSelectedGameObject.tag)];
+
+        if (upgreadHeads.sprite == headOptions[0])
+            upgradeCost.text = 1 + " head";
+        else if (upgreadHeads.sprite == headOptions[1])
+            upgradeCost.text = 2 + " heads";
+        else if (upgreadHeads.sprite == headOptions[2])
+            upgradeCost.text = 5 + " heads";
+        else if (upgreadHeads.sprite == headOptions[3])
+            upgradeCost.text = 10 + " heads";
+        else if (upgreadHeads.sprite == headOptions[4])
+            upgradeCost.text = 25 + " heads";
+        else if (upgreadHeads.sprite == headOptions[5])
+            upgradeCost.text = 50 + " heads";
+        else if (upgreadHeads.sprite == headOptions[6])
+            upgradeCost.text = 100 + " heads";
+        else if (upgreadHeads.sprite == headOptions[7])
+            upgradeCost.text = 500 + " heads";
+        else if (upgreadHeads.sprite == headOptions[8])
+            upgradeCost.text = 1000 + " heads";
+
+
+            /*
+             * 
+            if (int.Parse(EventSystem.current.currentSelectedGameObject.tag) == 0 && soNo.head >= 1)
+            {
+                foods.Add(allFoods[int.Parse(EventSystem.current.currentSelectedGameObject.tag)]);
+                soNo.head -= 1;
+                chanceSoph += 1;
+            }
+            else if (int.Parse(EventSystem.current.currentSelectedGameObject.tag) == 1 && soNo.head >= 2)
+            {
+                foods.Add(allFoods[int.Parse(EventSystem.current.currentSelectedGameObject.tag)]);
+                soNo.head -= 2;
+                chanceDam += 1;
+            }
+            else if (int.Parse(EventSystem.current.currentSelectedGameObject.tag) == 2 && soNo.head >= 5)
+            {
+                foods.Add(allFoods[int.Parse(EventSystem.current.currentSelectedGameObject.tag)]);
+                soNo.head -= 5;
+                chancePre += 1;
+            }
+            else if (int.Parse(EventSystem.current.currentSelectedGameObject.tag) == 3 && soNo.head >= 10)
+            {
+                foods.Add(allFoods[int.Parse(EventSystem.current.currentSelectedGameObject.tag)]);
+                soNo.head -= 10;
+                chance240 += 1;
+            }
+            else if (int.Parse(EventSystem.current.currentSelectedGameObject.tag) == 4 && soNo.head >= 25)
+            {
+                foods.Add(allFoods[int.Parse(EventSystem.current.currentSelectedGameObject.tag)]);
+                soNo.head -= 25;
+                chanceKry += 1;
+            }
+            else if (int.Parse(EventSystem.current.currentSelectedGameObject.tag) == 5 && soNo.head >= 50)
+            {
+                foods.Add(allFoods[int.Parse(EventSystem.current.currentSelectedGameObject.tag)]);
+                soNo.head -= 50;
+                chanceBli += 1;
+            }
+            else if (int.Parse(EventSystem.current.currentSelectedGameObject.tag) == 6 && soNo.head >= 100)
+            {
+                foods.Add(allFoods[int.Parse(EventSystem.current.currentSelectedGameObject.tag)]);
+                soNo.head -= 100;
+                chanceDan += 1;
+            }
+            else if (int.Parse(EventSystem.current.currentSelectedGameObject.tag) == 7 && soNo.head >= 500)
+            {
+                foods.Add(allFoods[int.Parse(EventSystem.current.currentSelectedGameObject.tag)]);
+                soNo.head -= 500;
+                chanceAud += 1;
+            }
+            else if (int.Parse(EventSystem.current.currentSelectedGameObject.tag) == 8 && soNo.head >= 1000)
+            {
+                foods.Add(allFoods[int.Parse(EventSystem.current.currentSelectedGameObject.tag)]);
+                soNo.head -= 1000;
+                chanceSkr += 1;
+            }
+    */
+
+
     }
     public void UpdateSkin()
     {
