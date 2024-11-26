@@ -54,6 +54,7 @@ public class snake : MonoBehaviour
     public Button[] headClicks;
 
     public GameObject upgrade;
+    public GameObject hruh;
 
     public float chanceSoph;
     public float chanceDam;
@@ -82,11 +83,12 @@ public class snake : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {/*
         if (Input.GetKeyDown("escape") && !gameOver && started == true)
         {
             upgrade.SetActive(!upgrade.active);
         }
+        */
         if (Input.GetKeyDown("space") && gameOver)
         {
             Restar();
@@ -122,7 +124,7 @@ public class snake : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (!gameOver && !upgrade.active)
+        if (!gameOver && !upgrade.active && !hruh.active)
         {
             started = true;
             timer += ((snaaake.Count / speed) + 1f);

@@ -17,6 +17,7 @@ public class heads : MonoBehaviour
     float collect = 80000000;
 
     public GameObject window;
+    public GameObject window2;
 
     public TextMeshProUGUI swapCostText;
     public TextMeshProUGUI autoCostText;
@@ -57,7 +58,7 @@ public class heads : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (!window.active && !snak.gameOver)
+        if (!window.active && !window2.active && !snak.gameOver)
             head += (max+(max*collect)) / 600f;
     }
     public void Heals()

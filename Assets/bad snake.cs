@@ -11,6 +11,7 @@ public class badSnake : MonoBehaviour
 
 
     public GameObject upgrade;
+    public GameObject hruh;
 
     public Sprite pumpkin1;
     public Sprite pumpkin2;
@@ -23,7 +24,7 @@ public class badSnake : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!gameOver.active && !upgrade.active)
+        if (!gameOver.active && !upgrade.active && !hruh.active)
         {
             timer += 1;
             if (timer >= 25 && me.sprite == pumpkin1)
