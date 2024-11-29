@@ -16,5 +16,46 @@ public class huh : MonoBehaviour
     public void HeadsHuh()
     {
         huhh.SetActive(true);
+        text.text = "The heads you've collected. Use them at the shop for upgrades!";
+    }
+    public void HeartsHuh()
+    {
+        huhh.SetActive(true);
+        text.text = "Your health. You'll lose one if you run into a skull or your pumpkins!";
+    }
+    public void ShopHuh()
+    {
+        huhh.SetActive(true);
+        text.text = "The shop! Click on it to spend heads on upgrades and cosmetics!";
+    }
+    public void SwapHuh()
+    {
+        huhh.SetActive(true);
+        text.text = "Changes the colors of you and your pumpkins!";
+    }
+    public void AutoHuh()
+    {
+        huhh.SetActive(true);
+        text.text = "Lets you passively gain heads. So efficient!";
+    }
+    public void UpgradeHuh()
+    {
+        huhh.SetActive(true);
+        text.text = "Click a head below, then buy it here to up its odds of appearing!";
+    }
+    public void LowerHuh()
+    {
+        huhh.SetActive(true);
+        text.text = "Lowers your speed.\nUse this if you get overwhelmed!";
+    }
+    public void HealHuh()
+    {
+        huhh.SetActive(true);
+        text.text = "Heals one missing heart!";
+    }
+    public void ChanceHuh()
+    {
+        huhh.SetActive(true);
+        text.text = "The chance each head has of showing up and how much its worth!";
     }
 }

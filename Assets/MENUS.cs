@@ -19,7 +19,7 @@ public class MENUS : MonoBehaviour
             {
                 upgrades.SetActive(true);
                 menu.SetActive(false);
-            } else
+            } else if (instructions.active)
             {
                 instructions.SetActive(false);
                 upgrades.SetActive(false);

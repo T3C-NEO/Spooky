@@ -83,12 +83,15 @@ public class snake : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {/*
-        if (Input.GetKeyDown("escape") && !gameOver && started == true)
+    {
+        if ((Input.GetKeyDown("escape") || Input.GetKeyDown("a") ||
+            Input.GetKeyDown("w") || Input.GetKeyDown("d") ||
+            Input.GetKeyDown("s") || Input.GetKeyDown("space") || Input.GetKeyDown("enter"))
+            && !gameOver && started == true && upgrade.active)
         {
-            upgrade.SetActive(!upgrade.active);
+            upgrade.SetActive(false);
         }
-        */
+        
         if (Input.GetKeyDown("space") && gameOver)
         {
             Restar();
