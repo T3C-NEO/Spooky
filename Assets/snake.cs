@@ -88,10 +88,9 @@ public class snake : MonoBehaviour
             Input.GetKeyDown("w") || Input.GetKeyDown("d") ||
             Input.GetKeyDown("s") || Input.GetKeyDown("space") || Input.GetKeyDown("enter"))
             && !gameOver && started == true && upgrade.active)
-        {
             upgrade.SetActive(false);
-        }
-        
+        else if(!upgrade.active && (Input.GetKeyDown("escape") || Input.GetKeyDown("space")))
+            upgrade.SetActive(true);
         if (Input.GetKeyDown("space") && gameOver)
         {
             Restar();
@@ -208,7 +207,7 @@ public class snake : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
-    void Summoning()
+    public void Summoning()
     {
         snaaake.Add(Instantiate(square, snaaake[snaaake.Count-1].transform.position, Quaternion.identity));
         snaaake[snaaake.Count-1].GetComponent<SpriteRenderer>().sprite = pumpkin3;

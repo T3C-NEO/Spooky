@@ -18,6 +18,8 @@ public class heads : MonoBehaviour
 
     public GameObject window;
     public GameObject window2;
+    public TextMeshProUGUI window22;
+    bool showHop = false;
 
     public TextMeshProUGUI swapCostText;
     public TextMeshProUGUI autoCostText;
@@ -41,6 +43,9 @@ public class heads : MonoBehaviour
     public TextMeshProUGUI chanceAud;
     public TextMeshProUGUI chanceSkr;
 
+    public GameObject skull2;
+    public GameObject skull3;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,6 +63,18 @@ public class heads : MonoBehaviour
     }
     void FixedUpdate()
     {
+        if (head >= 100 && !skull2.active)
+            skull2.SetActive(true);
+        if (head >= 1000 && !skull3.active)
+            skull3.SetActive(true);
+        if (head == 10 && showHop == false)
+        {
+            showHop= true;
+            window2.SetActive(true);
+            window22.text = "Remember you can buy upgrades at the shop! (space/esc or click icon)";
+        }
+        if (window.active && head > 0)
+            showHop= true;
         if (!window.active && !window2.active && !snak.gameOver)
             head += (max+(max*collect)) / 600f;
     }
@@ -119,7 +136,7 @@ public class heads : MonoBehaviour
         if (head >= lowerCost)
         {
             head -= lowerCost;
-            snak.speed += 5;
+            snak.speed += 2;
             lowerCost *= 2;
             lowerCostText.text = lowerCost + " heads";
         }

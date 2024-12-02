@@ -10,7 +10,9 @@ public class huh : MonoBehaviour
 
     private void Update()
     {
-        if (huhh.active && Input.anyKeyDown)
+        if (huhh.active && Input.anyKeyDown && text.text != "Remember you can buy upgrades at the shop! (space/esc or click icon)")
+            huhh.SetActive(false);
+        if (huhh.active && (Input.GetMouseButtonDown(0)|| Input.GetKeyDown("escape")) && text.text == "Remember you can buy upgrades at the shop! (space/esc or click icon)")
             huhh.SetActive(false);
     }
     public void HeadsHuh()

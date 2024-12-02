@@ -20,6 +20,8 @@ public class badSnake : MonoBehaviour
 
     public AudioSource nom;
 
+    public snake sn;
+
     bool goTime;
 
     private void FixedUpdate()
@@ -107,6 +109,14 @@ public class badSnake : MonoBehaviour
                 transform.eulerAngles = new Vector3(0, 0, 90);
             else
                 transform.eulerAngles = new Vector3(0, 0, -90);
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "food")
+        {
+            sn.Summoning();
+            Destroy(collision.gameObject);
         }
     }
 }
