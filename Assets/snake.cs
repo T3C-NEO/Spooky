@@ -39,6 +39,7 @@ public class snake : MonoBehaviour
 
     public AudioSource nom;
 
+    public Sprite arrow;
     public heads soNo;
 
     //menu shit
@@ -271,7 +272,7 @@ public class snake : MonoBehaviour
             soNo.head -= 1000;
             chanceSkr += 1;
         }
-        upgreadHeads.sprite = null;
+        upgreadHeads.sprite = arrow;
         upgradeCost.text = "Click Below!";
         soNo.UpdateChance();
     }
